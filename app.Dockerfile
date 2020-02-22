@@ -14,4 +14,6 @@ RUN pip install -r requirements.txt
 
 COPY ./backend .
 
+EXPOSE 5000
+
 CMD ["flask", "run"]

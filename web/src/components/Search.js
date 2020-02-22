@@ -28,7 +28,7 @@ class Search extends React.Component {
             loading: true
         });
 
-        const url = '//localhost:5000/search?search_term=' + this.state.menu;
+        const url = 'http://3.0.184.101/:5000/search?search_term=' + this.state.menu;
 
         try {
             const response = await fetch(url, {

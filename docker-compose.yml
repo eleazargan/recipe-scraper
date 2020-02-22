@@ -11,16 +11,28 @@ services:
       - ./backend:/code
     environment:
       FLASK_ENV: development
+    networks:
+      - appbridge
 
   web:
     container_name: web
     build:
       context: .
       dockerfile: web.Dockerfile
+    links:
+      - backend
     ports:
       - '80:3000'
     environment:
       - NODE_ENV=development
+    networks:
+      - appbridge
 
   redis:
     image: "redis:alpine"
+    networks:
+      - appbridge
+
+networks:
+  appbridge:
+    driver: bridge
