@@ -35,6 +35,20 @@ services:
     networks:
       - appbridge
 
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root12345
+      MYSQL_USER: local_user
+      MYSQL_PASSWORD: root12345
+      MYSQL_DATABASE: local_database
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+    networks:
+      - appbridge
+
 networks:
   appbridge:
     driver: bridge
